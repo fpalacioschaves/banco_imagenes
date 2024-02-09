@@ -43,6 +43,13 @@ $categorias = leer_categorias();
             </div>
         </div>
 
+        <div class="row fila">
+            <div class="col">
+                <label for="creditos_imagen">Créditos de la imagen</label>
+                <textarea class="form-control" id="creditos_imagen" name="creditos_imagen" rows="3"></textarea>
+            </div>
+        </div>
+
 
         <div class="row">
         <div class="col">

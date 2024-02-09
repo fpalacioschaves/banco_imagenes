@@ -87,13 +87,15 @@ function update_imagen($id, $datos){
     $descripcion_imagen = $datos["descripcion_imagen"];
     $tags_imagen = $datos["tags_imagen"];
     $categoria_imagen = $datos['categorias'];
+    $creditos_imagen = $datos['creditos_imagen'];
   
     
     $consulta = "UPDATE imagenes 
     SET titulo_imagen= '$titulo_imagen',
     descripcion_imagen = '$descripcion_imagen',
     tags_imagen = '$tags_imagen',
-    categoria_imagen = $categoria_imagen
+    categoria_imagen = $categoria_imagen,
+    creditos_imagen = '$creditos_imagen'
    
     WHERE id_imagen = $id_imagen";
 
@@ -126,14 +128,15 @@ function add_imagen($datos){
     $descripcion_imagen = $datos["descripcion_imagen"];
     $tags_imagen = $datos["tags_imagen"];
     $categoria_imagen = $datos['categorias'];
+    $creditos_imagen = $datos['creditos_imagen'];
     $nombre_imagen = $filename;
     
     if (in_array($extension, $extensiones_validas)){
 
         $consulta = "INSERT INTO imagenes
-        (nombre_archivo, titulo_imagen, descripcion_imagen,tags_imagen, categoria_imagen)
+        (nombre_archivo, titulo_imagen, descripcion_imagen,tags_imagen, categoria_imagen, creditos_imagen)
         VALUES ('$nombre_imagen', '$titulo_imagen', '$descripcion_imagen',
-        '$tags_imagen', '$categoria_imagen')";
+        '$tags_imagen', '$categoria_imagen', '$creditos_imagen')";
 
         $resultado = $conexion->consultar($consulta);
 
@@ -156,6 +159,25 @@ function add_imagen($datos){
     
     
     
+
+}
+
+function add_categoria($datos){
+
+    $conexion = new conectar_db();
+
+    $nombre_categoria = $_POST["categoria_nombre"];
+
+
+    $consulta = "INSERT INTO categorias_imagen
+        (nombre_categoria)
+        VALUES ('$nombre_categoria')";
+
+        $resultado = $conexion->consultar($consulta);
+
+        $conexion->cerrar(); 
+        
+        header('Location: admin.php');
 
 }
 

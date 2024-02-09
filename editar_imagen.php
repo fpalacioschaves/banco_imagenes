@@ -6,6 +6,8 @@ $id_imagen = $_GET["id_imagen"];
 $imagen = leer_imagen($id_imagen)[0];
 $categoria_imagen = $imagen['categoria_imagen'];
 $categorias = leer_categorias();
+
+list($width, $height, $type, $attr) = getimagesize("./uploads/" . $imagen["nombre_archivo"]);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -54,6 +56,22 @@ $categorias = leer_categorias();
                         <label for="descripcion_imagen">Descripción de la imagen</label>
                         <textarea class="form-control" id="descripcion_imagen" name="descripcion_imagen" rows="3"><?php echo $imagen["descripcion_imagen"];?></textarea>
                     </div>
+                </div>
+                <div class="row fila">
+                    <div class="col">
+                        <label for="creditos_imagen">Creditos de la imagen</label>
+                        <textarea class="form-control" id="creditos_imagen" name="creditos_imagen" rows="3"><?php echo $imagen["creditos_imagen"];?></textarea>
+                    </div>
+                </div>
+                <div class="row fila">
+                    <div class="col">
+                        <label for="tags_imagen">Ancho de la imagen</label>
+                        <input class="form-control" type="text" name="ancho_imagen" value='<?php echo $width;?> px' disabled>
+                    </div> 
+                    <div class="col">
+                    <label for="tags_imagen">Alto de la imagen</label>
+                        <input class="form-control" type="text" name="alto_imagen" value='<?php echo $height;?> px' disabled>
+                    </div>    
                 </div>
                 <div class="row fila">
                     <div class="col">

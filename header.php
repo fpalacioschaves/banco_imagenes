@@ -10,7 +10,7 @@
 
             <div class="col-md-4">
                     <a href="add_imagen.php" class="btn btn-primary">Añadir imagen</a>
-                    <a href="add_imagen.php" class="btn btn-primary">Añadir categoría</a>
+                    <a href="add_categoria.php" class="btn btn-primary">Añadir categoría</a>
             </div>
 
             <div class="col-md-4">
