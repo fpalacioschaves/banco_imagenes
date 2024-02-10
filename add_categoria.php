@@ -12,7 +12,7 @@ $categorias = leer_categorias();
 
     <?php include("./header.php"); ?>
 
-    <section class="container">
+    <section class="container total_container">
         <?php
         if ($_POST) {
 

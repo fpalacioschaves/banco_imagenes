@@ -30,6 +30,15 @@ function filtrar_imagenes(){
     var filtro = document.getElementById("filtro").value;
     var ajax_url = "./filtrar_imagenes.php";
 
+    var paginador = document.getElementById("paginador");
+
+    if(filtro != ""){
+        paginador.style.display = "none";
+
+    }
+    else{
+        paginador.style.display = "block";
+    }
  
 
   

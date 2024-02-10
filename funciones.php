@@ -45,11 +45,17 @@ function check_session(){
 }
 
 // function that reads all the alumns from the database
-function leer_imagenes($inicio = 0){
-
+function leer_imagenes($pagina, $items_por_pagina){
+    if($pagina > 0){
+        $offset = ($pagina - 1) * $items_por_pagina;
+    }
+    else{
+        $offset = 0;
+    }
+   
     $conexion = new conectar_db();
     $consulta = "SELECT imagenes.*, categorias_imagen.nombre_categoria  FROM imagenes, categorias_imagen
-    WHERE imagenes.categoria_imagen = categorias_imagen.id_categoria";
+    WHERE imagenes.categoria_imagen = categorias_imagen.id_categoria LIMIT $items_por_pagina OFFSET $offset";
     $resultado = $conexion->consultar($consulta);
     $conexion->cerrar();
     return $resultado->fetch_all(MYSQLI_ASSOC);
@@ -238,6 +244,56 @@ function contar_items_condicionado($tabla, $condicion){
     return $resultado[0]["numero"];
 
 
+}
+
+function paginador(){
+
+    $num_total_rows = contar_items("imagenes"); 
+
+
+    $numero_item_by_page = 12;
+    if ($num_total_rows > 0) {
+        $page = false;
+     
+        //examino la pagina a mostrar y el inicio del registro a mostrar
+        if (isset($_GET["page"])) {
+            $page = $_GET["page"];
+        }
+     
+        if (!$page) {
+            $start = 0;
+            $page = 1;
+        } else {
+            $start = ($page - 1) * $numero_item_by_page;
+        }
+        //calculo el total de paginas
+        $total_pages = ceil($num_total_rows / $numero_item_by_page);
+     
+        //pongo el numero de registros total, el tamano de pagina y la pagina que se muestra
+        $paginador =  '<nav id="paginador">
+                        <ul class="pagination">';
+        
+        if ($total_pages > 1) {
+            if ($page != 1) {
+                $paginador = $paginador . '<li class="page-item"><a class="page-link" href="admin.php?page='.($page-1).'"><span aria-hidden="true">&laquo;</span></a></li>';
+            }
+     
+            for ($i=1;$i<=$total_pages;$i++) {
+                if ($page == $i) {
+                    $paginador = $paginador . '<li class="page-item active"><a class="page-link" href="#">'.$page.'</a></li>';
+                } else {
+                    $paginador = $paginador . '<li class="page-item"><a class="page-link" href="admin.php?page='.$i.'">'.$i.'</a></li>';
+                }
+            }
+     
+            if ($page != $total_pages) {
+                $paginador = $paginador . '<li class="page-item"><a class="page-link" href="admin.php?page='.($page+1).'"><span aria-hidden="true">&raquo;</span></a></li>';
+            }
+        }
+        $paginador = $paginador . '</ul>';
+        $paginador = $paginador . '</nav>';
+        return $paginador;
+    }
 }
 
 

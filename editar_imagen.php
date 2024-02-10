@@ -16,7 +16,7 @@ list($width, $height, $type, $attr) = getimagesize("./uploads/" . $imagen["nombr
 
     <?php include("./header.php");?>
 
-    <section class="container">
+    <section class="container total_container">
     <?php 
     if($_POST){
         
@@ -102,7 +102,7 @@ list($width, $height, $type, $attr) = getimagesize("./uploads/" . $imagen["nombr
                 </div>
                 <div class="row fila">
                     <div class="col">
-                        <input type="submit" style="margin-top: 43px;" value="Editar" class="btn btn-primary boton_enviar">
+                        <input type="submit" style="margin-top: 43px;" value="Actualizar" class="btn btn-primary boton_enviar">
                     </div>
             </div>
 

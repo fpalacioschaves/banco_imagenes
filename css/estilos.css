@@ -1,3 +1,6 @@
+#masonEasy{
+margin-bottom: 50px;
+}
 body.index{
     display: flex;
     align-items: center;
@@ -6,6 +9,15 @@ body.index{
 
 .bg-lighte{
     background-color: white !important;
+}
+
+.total_container{
+    margin-top: 150px;
+}
+
+.filter-controls{
+    background-color: #212529;
+    margin: 0 auto !important;
 }
 .img_container{
     width: 100%;
@@ -50,7 +62,15 @@ body{
 }
 
 header{
-    margin-top: 10px;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    z-index: 1000;
+}
+
+.label_filtro{
+    color:white;
 }
 
 .navbar{
@@ -114,7 +134,7 @@ input[type="text"], input[type="password"]{
 .informacion{
     color: white;
     margin-top: 9px;
-    width: 500px;
+    width: 650px;
     text-align: right;
     padding-right: 20px;
 }
@@ -214,4 +234,9 @@ border-radius: calc(8px - 1px) calc(8px - 1px) 0 0;
    display: flex;
    align-items: center;
    justify-content: space-between;
+   padding: 20px 0;
+   margin-top: 100px;
+   border-top: 1px solid #ccc;
+   width: 100%;
+   float: left;
  }
