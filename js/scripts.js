@@ -64,6 +64,27 @@ function filtrar_imagenes(){
 
 }
 
+$('.celda_editable').on('blur',function(){
+    
+    var that = $(this),
+    categoria_id = that.attr('id'),
+    content = that.html();
 
+    var ajax_url = "./editar_categoria.php";
+
+    var ajax_request = new XMLHttpRequest();
+
+    
+   ajax_request.onreadystatechange = function() {
+        var response = ajax_request.responseText;
+        window.location="edit_categorias.php";
+     }
+    
+     ajax_request.open( "GET", ajax_url + "?id=" + categoria_id + "&nombre=" + content );
+           
+     ajax_request.send();
+
+     
+});
 
 

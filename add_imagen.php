@@ -17,28 +17,7 @@ if ($_POST) {
     <body class="sb-nav-fixed">
         <?php include("./header.php"); ?>
         <div id="layoutSidenav">
-            <div id="layoutSidenav_nav">
-                <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
-                    <div class="sb-sidenav-menu">
-                        <div class="nav">
-                            <a class="nav-link" href="add_imagen.php">
-                                Añadir imagen
-                            </a>
-
-                            <a class="nav-link" href="add_categoria.php">
-                                Añadir categoria
-                            </a>
-
-                            <a class="nav-link" href="logout.php">
-                                Logout
-                            </a>
-                        </div>
-                    </div>
-            </div>
-            <div class="sb-sidenav-footer">
-
-                </nav>
-            </div>
+        <?php include("./sidebar.php"); ?>
             <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid px-4">
@@ -119,13 +98,15 @@ if ($_POST) {
                 </footer>
             </div>
         </div>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+       <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         <script src="./js/lightbox-plus-jquery.js"></script>
         <script src="./js/masonEasy.min.js"></script>
         <script src="./js/scripts.js" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-        <script src="js/scripts.js"></script>
+        <script src="js/scripts.js"></script>-->
+        <script src="./js/lightbox-plus-jquery.js"></script>
+        <script src="./js/scripts.js" crossorigin="anonymous"></script>
     </body>
 
     </html>

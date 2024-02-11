@@ -113,6 +113,17 @@ function update_imagen($id, $datos){
     header('Location: admin.php');
 }
 
+function categorias_e_imagenes(){
+    $conexion = new conectar_db();
+    $consulta = "SELECT categorias_imagen.*, COUNT(imagenes.id_imagen) AS imagenes
+    FROM categorias_imagen, imagenes
+    WHERE imagenes.categoria_imagen = categorias_imagen.id_categoria
+    GROUP BY(imagenes.categoria_imagen);";
+    $resultado = $conexion->consultar($consulta);
+    $conexion->cerrar();
+    return $resultado->fetch_all(MYSQLI_ASSOC);
+}
+
 
 
 //function that add the company data in the database
