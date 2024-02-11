@@ -96,14 +96,22 @@ $items_por_pagina = 10;
                           <div class="d-flex justify-content-between align-items-center">
                             <div class="btn-group">
                               <button type="button" class="btn btn-sm btn-outline-secondary">
+                                <a href="uploads/<?php echo $url_imagen; ?>" download="uploads/<?php echo $url_imagen; ?>">
+                                <i class="bi bi-cloud-arrow-down-fill"></i>
+                                </a>
+                              </button>
+
+                              <button type="button" class="btn btn-sm btn-outline-secondary">
                                 <a href="editar_imagen.php?id_imagen=<?php echo $id_imagen; ?>">
                                   <i class="bi bi-pencil-fill"></i>
                                 </a>
                               </button>
+
                               <button type="button" class="btn btn-sm btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#deletemodal<?php echo $id_imagen; ?>">
                                 <i class="bi bi-trash3-fill"></i>
                                 </a>
                               </button>
+
                               <div class="modal fade" id="deletemodal<?php echo $id_imagen; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog" role="document">
                                   <div class="modal-content">
