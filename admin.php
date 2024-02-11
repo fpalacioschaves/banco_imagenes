@@ -70,7 +70,7 @@ $items_por_pagina = 10;
               <div class="container">
 
                 <!--<div class="row row-cols-4 row-cols-sm-4 row-cols-md-4 g-4" id="masonEasy">-->
-                  <div class="gallery_container">
+                  <div class="gallery_container" id="gallery_container">
                   <?php
                   $imagenes = leer_imagenes($pagina, $items_por_pagina);
                   foreach ($imagenes as $imagen) {

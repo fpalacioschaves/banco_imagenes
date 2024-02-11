@@ -52,7 +52,7 @@ function filtrar_imagenes(){
 
             // Analizaos el responseText que contendrá el JSON enviado desde el servidor
             var response = ajax_request.responseText;
-            document.getElementById("masonEasy").innerHTML = response;
+            document.getElementById("gallery_container").innerHTML = response;
         }
      }
 
