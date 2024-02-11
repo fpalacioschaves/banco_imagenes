@@ -3,6 +3,18 @@ body.index{
     align-items: center;
     height: 75vh;
 }
+.logo_login{
+    width: 90%;
+    margin: 10px auto; 
+}
+.input-group{
+    width: 500px !important;
+}
+
+.boton_borrar{
+    height: 36px;
+    margin-top: 10px;
+}
 .login{
     padding: 10px !important;
     font: size 20px !important;
@@ -76,6 +88,7 @@ header{
 
 .label_filtro{
     color:white;
+    margin-top: 15px;
 }
 
 .navbar{
