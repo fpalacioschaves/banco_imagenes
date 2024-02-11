@@ -12,7 +12,8 @@
         
 
         <link rel="stylesheet" href="./css/lightbox.css">
-        <link rel="stylesheet" href="./css/style.css">
+          <link rel="stylesheet" href="./css/styles.css">
+      <link rel="stylesheet" href="./css/style.css">
     <!-- JavaScript Bundle with Popper -->
     <link href="./css/estilos.css" rel="stylesheet">
     <script src="./js/bootstrap.bundle.js" crossorigin="anonymous"></script>

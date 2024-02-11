@@ -251,7 +251,7 @@ function paginador(){
     $num_total_rows = contar_items("imagenes"); 
 
 
-    $numero_item_by_page = 12;
+    $numero_item_by_page = 10;
     if ($num_total_rows > 0) {
         $page = false;
      
