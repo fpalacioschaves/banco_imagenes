@@ -118,6 +118,8 @@ function update_imagen($id, $datos){
 //function that add the company data in the database
 function add_imagen($datos){
 
+    var_dump($datos);
+
     $conexion = new conectar_db();
 
     $filename = $_FILES["archivo"]["name"];
@@ -143,6 +145,8 @@ function add_imagen($datos){
         (nombre_archivo, titulo_imagen, descripcion_imagen,tags_imagen, categoria_imagen, creditos_imagen)
         VALUES ('$nombre_imagen', '$titulo_imagen', '$descripcion_imagen',
         '$tags_imagen', '$categoria_imagen', '$creditos_imagen')";
+
+        echo $consulta;
 
         $resultado = $conexion->consultar($consulta);
 
