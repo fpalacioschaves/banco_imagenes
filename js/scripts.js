@@ -87,4 +87,8 @@ $('.celda_editable').on('blur',function(){
      
 });
 
+$(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+  })
+
 

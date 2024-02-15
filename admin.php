@@ -22,7 +22,7 @@ $items_por_pagina = 10;
       <main>
         <div class="container-fluid px-4">
           <h1 class="mt-4">Banco de Imágenes</h1>
-          <p class="lead text-muted">
+          <p class="lead text-muted" style="text-align: center;">
             ¡Bienvenido al aplicativo exclusivo de Grupo ATU para el banco de imágenes
             <br>
             En este espacio, encontrarás una amplia variedad de imágenes de alta calidad seleccionadas cuidadosamente para satisfacer las necesidades creativas de nuestros equipos en Grupo ATU. Nuestro banco de imágenes ofrece una extensa colección que abarca desde fotografías de productos y servicios, hasta imágenes de eventos corporativos, todo ello diseñado para ayudarte a crear contenido visual impactante y relevante para nuestros proyectos.
@@ -84,7 +84,7 @@ $items_por_pagina = 10;
                     <div class="masonry-item" data-category="<?php echo $categoria_imagen; ?>">
                       <div class="card shadow-sm">
                         <div class="img_container">
-                          <a href="uploads/<?php echo $url_imagen; ?>" data-lightbox="<?php echo $titulo_imagen; ?>" data-title="<?php echo $titulo_imagen; ?>">
+                          <a href="uploads/<?php echo $url_imagen; ?>" data-lightbox="<?php echo $titulo_imagen; ?>" data-title="<?php echo $titulo_imagen; ?>" data-toggle="tooltip" data-placement="top" title="Ampliar imagen">
                             <img src="./uploads/<?php echo $url_imagen; ?>">
                           </a>
                         </div>
@@ -93,21 +93,22 @@ $items_por_pagina = 10;
                           <p class="card-title"><?php echo $titulo_imagen; ?></p>
                           <p class="card-text"><?php echo $descripcion_imagen; ?></p>
                           <p class="card-text"><?php echo $tags_imagen; ?></p>
-                          <div class="d-flex justify-content-between align-items-center">
+                          <div class="d-flex justify-content-between align-items-center" style="margin: 10px 0;">
                             <div class="btn-group">
-                              <button type="button" class="btn btn-sm btn-outline-secondary">
+
+                              <button type="button" class="btn btn-sm btn-outline-secondary" data-toggle="tooltip" data-placement="top" title="Descargar imagen">
                                 <a href="uploads/<?php echo $url_imagen; ?>" download="uploads/<?php echo $url_imagen; ?>">
                                 <i class="bi bi-cloud-arrow-down-fill"></i>
                                 </a>
                               </button>
 
-                              <button type="button" class="btn btn-sm btn-outline-secondary">
+                              <button type="button" class="btn btn-sm btn-outline-secondary" data-toggle="tooltip" data-placement="top" title="Editar imagen">
                                 <a href="editar_imagen.php?id_imagen=<?php echo $id_imagen; ?>">
                                   <i class="bi bi-pencil-fill"></i>
                                 </a>
                               </button>
 
-                              <button type="button" class="btn btn-sm btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#deletemodal<?php echo $id_imagen; ?>">
+                              <button type="button" class="btn btn-sm btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#deletemodal<?php echo $id_imagen; ?>" data-toggle="tooltip" data-placement="top" title="Borrar imagen">
                                 <i class="bi bi-trash3-fill"></i>
                                 </a>
                               </button>
@@ -132,8 +133,8 @@ $items_por_pagina = 10;
                                 </div>
                               </div>
                             </div>
-                            <small class="text-muted"><?php echo $categoria_imagen; ?></small>
                           </div>
+                          <div class="card-text text-muted"><?php echo $categoria_imagen; ?></div>
                         </div>
 
                       </div>
