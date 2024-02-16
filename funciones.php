@@ -45,7 +45,7 @@ function check_session(){
 }
 
 // function that reads all the alumns from the database
-function leer_imagenes($pagina, $items_por_pagina){
+function leer_imagenes($pagina, $items_por_pagina, $flag=0){
     if($pagina > 0){
         $offset = ($pagina - 1) * $items_por_pagina;
     }
@@ -55,7 +55,7 @@ function leer_imagenes($pagina, $items_por_pagina){
    
     $conexion = new conectar_db();
     $consulta = "SELECT imagenes.*, categorias_imagen.nombre_categoria  FROM imagenes, categorias_imagen
-    WHERE imagenes.categoria_imagen = categorias_imagen.id_categoria LIMIT $items_por_pagina OFFSET $offset";
+    WHERE imagenes.categoria_imagen = categorias_imagen.id_categoria AND imagenes.flag_video = $flag LIMIT $items_por_pagina OFFSET $offset";
     $resultado = $conexion->consultar($consulta);
     $conexion->cerrar();
     return $resultado->fetch_all(MYSQLI_ASSOC);
@@ -94,6 +94,7 @@ function update_imagen($id, $datos){
     $tags_imagen = $datos["tags_imagen"];
     $categoria_imagen = $datos['categorias'];
     $creditos_imagen = $datos['creditos_imagen'];
+    $flag_video = $datos["flag_video"];
   
     
     $consulta = "UPDATE imagenes 
@@ -109,8 +110,13 @@ function update_imagen($id, $datos){
 
  
     
-
-    header('Location: admin.php');
+    if($flag_video == 0){
+        header('Location: admin.php');
+    }
+    else{
+        header('Location: admin_videos.php');
+    }
+   
 }
 
 function categorias_e_imagenes(){
@@ -129,19 +135,23 @@ function categorias_e_imagenes(){
 //function that add the company data in the database
 function add_imagen($datos){
 
-    var_dump($datos);
-
     $conexion = new conectar_db();
 
     $filename = $_FILES["archivo"]["name"];
     $tempname = $_FILES["archivo"]["tmp_name"];
+    $type = $_FILES["archivo"]["type"];
     $folder = "./uploads/" . $filename;
 
 
 
     $extension = getExtension($filename);
 
-    $extensiones_validas = array("png", "jpg", "jpeg", "svg");
+
+  
+
+    
+
+    $extensiones_validas = array("png", "jpg", "jpeg", "svg", "mp4");
   
     $titulo_imagen = $datos["titulo_imagen"];
     $descripcion_imagen = $datos["descripcion_imagen"];
@@ -149,23 +159,28 @@ function add_imagen($datos){
     $categoria_imagen = $datos['categorias'];
     $creditos_imagen = $datos['creditos_imagen'];
     $nombre_imagen = $filename;
+    $flag_video = $datos["flag_video"];
     
     if (in_array($extension, $extensiones_validas)){
 
         $consulta = "INSERT INTO imagenes
-        (nombre_archivo, titulo_imagen, descripcion_imagen,tags_imagen, categoria_imagen, creditos_imagen)
+        (nombre_archivo, titulo_imagen, descripcion_imagen,tags_imagen, categoria_imagen, creditos_imagen, flag_video)
         VALUES ('$nombre_imagen', '$titulo_imagen', '$descripcion_imagen',
-        '$tags_imagen', '$categoria_imagen', '$creditos_imagen')";
+        '$tags_imagen', '$categoria_imagen', '$creditos_imagen', $flag_video)";
 
-        echo $consulta;
+        
 
         $resultado = $conexion->consultar($consulta);
 
         $conexion->cerrar();
 
-        // Now let's move the uploaded image into the folder: image
         if (move_uploaded_file($tempname, $folder)) {
+            if($flag_video == 0){
             header('Location: admin.php');
+            }
+            else{
+                header('Location: admin_videos.php');
+            }
         } else {
             echo "<h3>  Failed to upload image!</h3>";
         }
@@ -177,6 +192,8 @@ function add_imagen($datos){
                 </div>
             </div>";
     }
+
+    
     
     
     

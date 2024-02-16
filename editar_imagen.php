@@ -5,6 +5,7 @@ check_session();
 $id_imagen = $_GET["id_imagen"];
 $imagen = leer_imagen($id_imagen)[0];
 $categoria_imagen = $imagen['categoria_imagen'];
+$flag_video = $imagen["flag_video"];
 $categorias = leer_categorias();
 
 list($width, $height, $type, $attr) = getimagesize("./uploads/" . $imagen["nombre_archivo"]);
@@ -33,10 +34,17 @@ if ($_POST) {
                                 <div class="container">
                                     <form id="editar_imagen" action="" method="POST">
                                         <input type="hidden" name="id_imagen" value="<?php echo $imagen["id_imagen"]; ?>">
+                                        <input type="hidden" name="flag_video" value="<?php echo $imagen["flag_video"]; ?>">
                                         <div class="row fila">
                                             <div class="col">
                                                 <div class="imagen_formulario">
+                                                    <?php if($flag_video == 0){ ?>
                                                     <img src="./uploads/<?php echo $imagen['nombre_archivo']; ?>">
+                                                    <?php } else{ ?>
+                                                    <video src="uploads/<?php echo $imagen['nombre_archivo']; ?>" controls>
+                                                    <p>Su navegador no soporta vídeos HTML5.</p>
+                                                    </video>
+                                                    <?php } ?>
                                                 </div>
                                             </div>
                                             <div class="col">
@@ -66,6 +74,7 @@ if ($_POST) {
                                                         <textarea class="form-control" id="creditos_imagen" name="creditos_imagen" rows="3"><?php echo $imagen["creditos_imagen"]; ?></textarea>
                                                     </div>
                                                 </div>
+                                                <?php if($flag_video == 0){ ?>
                                                 <div class="row fila">
                                                     <div class="col">
                                                         <label for="tags_imagen">Ancho de la imagen</label>
@@ -76,6 +85,7 @@ if ($_POST) {
                                                         <input class="form-control" type="text" name="alto_imagen" value='<?php echo $height; ?> px' disabled>
                                                     </div>
                                                 </div>
+                                                <?php } ?>
                                                 <div class="row fila">
                                                     <div class="col">
                                                         <label for="tags_imagen">
