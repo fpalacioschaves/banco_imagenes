@@ -8,6 +8,13 @@ $categoria_imagen = $imagen['categoria_imagen'];
 $flag_video = $imagen["flag_video"];
 $categorias = leer_categorias();
 
+if($flag_video == 0){
+    $titulo = "Edición de imagen";
+}
+else{
+    $titulo = "Edición de vídeo";
+}
+
 list($width, $height, $type, $attr) = getimagesize("./uploads/" . $imagen["nombre_archivo"]);
 ?>
 <?php
@@ -28,7 +35,7 @@ if ($_POST) {
             <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid px-4">
-                        <h1 class="mt-4">Edición de imagen</h1>
+                        <h1 class="mt-4"><?php echo $titulo; ?></h1>
                         <section class="container total_container">
                             <div class="album py-5 bg-light" style="background-color: white !important;" ;>
                                 <div class="container">

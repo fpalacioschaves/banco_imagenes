@@ -22,7 +22,7 @@ $items_por_pagina = 10;
       <main>
         <div class="container-fluid px-4">
           <h1 class="mt-4">Banco de Imágenes</h1>
-          <div class="lead text-muted" style="text-align: center;">
+          <!--<div class="lead text-muted" style="text-align: center;">
             <div>
               ¡Bienvenido al aplicativo exclusivo de Grupo ATU para el banco de imágenes
               <br>
@@ -33,7 +33,7 @@ $items_por_pagina = 10;
               ¡Explora nuestro banco de imágenes y encuentra la inspiración que necesitas para llevar tus ideas al siguiente nivel en Grupo ATU!
               <br>
             </div>
-          </div>
+          </div>-->
           <div class="row">
             <div class="col-xl-4 col-md-6">
               <div class="card bg-primary text-white mb-4">

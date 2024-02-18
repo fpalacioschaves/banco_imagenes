@@ -4,6 +4,13 @@ include("./funciones.php");
 check_session();
 $categorias = leer_categorias();
 $flag_video = isset($_GET["flag_video"]) ? $_GET["flag_video"] : 0;
+
+if($flag_video == 0){
+    $titulo = "Añadir imagen";
+}
+else{
+    $titulo = "Añadir vídeo";
+}
 ?>
 <?php
 if ($_POST) {
@@ -22,7 +29,7 @@ if ($_POST) {
             <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid px-4">
-                        <h1 class="mt-4">Añadir imagen</h1>
+                        <h1 class="mt-4"><?php echo $titulo;?></h1>
                         <section class="container total_container">
                             <div class="album py-5 bg-light" style="background-color: white !important;">
                                 <div class="container">

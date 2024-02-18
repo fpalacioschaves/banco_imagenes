@@ -5,6 +5,10 @@
   padding: 1rem;
 }
 
+.mt-4{
+    margin: 30px 0 !important;
+}
+
 .card_header {
   border-bottom: 0px !important;
 }
@@ -69,10 +73,10 @@
   padding: 5px;
 }
 body.index {
-  display: flex;
+ 
   align-items: center;
   height: 75vh;
-  margin-top: 100px;
+  margin-top: 50px;
 }
 .logo_login {
   width: 90%;
@@ -100,7 +104,7 @@ body.index {
   background-color: white !important;
 }
 .text-muted {
-  margin: 10px 0;
+  margin: 20px 0;
   text-align: right;
 }
 
