@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:8889
--- Tiempo de generación: 16-02-2024 a las 09:13:25
+-- Tiempo de generación: 22-02-2024 a las 12:59:50
 -- Versión del servidor: 5.7.39
 -- Versión de PHP: 7.4.33
 
@@ -35,6 +35,18 @@ CREATE TABLE `categorias_imagen` (
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `configuracion`
+--
+
+CREATE TABLE `configuracion` (
+  `id` int(11) NOT NULL,
+  `nombre_grupo` varchar(250) NOT NULL,
+  `imagen_grupo` varchar(250) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `imagenes`
 --
 
@@ -57,6 +69,7 @@ CREATE TABLE `imagenes` (
 
 CREATE TABLE `users` (
   `id_usuario` int(11) NOT NULL,
+  `nombre_usuario` varchar(100) NOT NULL,
   `email_usuario` varchar(50) NOT NULL,
   `password_usuario` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -70,6 +83,12 @@ CREATE TABLE `users` (
 --
 ALTER TABLE `categorias_imagen`
   ADD PRIMARY KEY (`id_categoria`);
+
+--
+-- Indices de la tabla `configuracion`
+--
+ALTER TABLE `configuracion`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indices de la tabla `imagenes`
@@ -93,6 +112,12 @@ ALTER TABLE `users`
 --
 ALTER TABLE `categorias_imagen`
   MODIFY `id_categoria` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `configuracion`
+--
+ALTER TABLE `configuracion`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `imagenes`

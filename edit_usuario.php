@@ -20,7 +20,7 @@ if ($_POST) {
     <body class="sb-nav-fixed">
         <?php include("./header.php"); ?>
         <div id="layoutSidenav">
-            <?php include("./sidebar.php"); ?>
+            <?php include("./sidebar_configuracion.php"); ?>
             <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid px-4">
@@ -63,13 +63,7 @@ if ($_POST) {
                         </section>
                     </div>
                 </main>
-                <footer class="py-4 bg-light mt-auto">
-                    <div class="container-fluid px-4">
-                        <div class="d-flex align-items-center justify-content-between small">
-                            <div class="text-muted">Copyright &copy; CENEC Grupo ATU 2024</div>
-                        </div>
-                    </div>
-                </footer>
+                <?php include("./footer.php");?>
             </div>
         </div>
         <script src="./js/lightbox-plus-jquery.js"></script>

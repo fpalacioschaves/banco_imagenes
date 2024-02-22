@@ -14,13 +14,6 @@
                     Editar categorias
                 </a>
 
-                <a class="nav-link" href="add_usuario.php">
-                    Añadir usuario
-                </a>
-
-                <a class="nav-link" href="edit_usuario.php">
-                    Editar usuario
-                </a>
 
                 <a class="nav-link" href="logout.php">
                     Logout

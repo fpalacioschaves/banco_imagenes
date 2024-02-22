@@ -98,14 +98,7 @@ if ($_POST) {
                         </section>
                     </div>
                 </main>
-                <footer class="py-4 bg-light mt-auto">
-                    <div class="container-fluid px-4">
-                        <div class="d-flex align-items-center justify-content-between small">
-                            <div class="text-muted">Copyright &copy; CENEC Grupo ATU 2024</div>
-                        </div>
-                    </div>
-                </footer>
-            </div>
+                <?php include("./footer.php");?>
         </div>
         <script src="./js/lightbox-plus-jquery.js"></script>
         <script src="./js/scripts.js" crossorigin="anonymous"></script>

@@ -1,7 +1,4 @@
 <?php
-include("./configuracion.php");
-
-
 class conectar_db{    
     private $host   ="localhost";
     private $usuario="root";
@@ -46,6 +43,102 @@ function check_session(){
         header('Location: index.php');
     }
 }
+
+function add_configuracion($datos){
+
+    $conexion = new conectar_db();
+
+    $filename = $_FILES["logo"]["name"];
+    $tempname = $_FILES["logo"]["tmp_name"];
+    $type = $_FILES["logo"]["type"];
+    $folder = "./images/" . $filename;
+
+    $extension = getExtension($filename);
+
+    $extensiones_validas = array("png", "jpg", "jpeg", "svg");
+  
+    $nombre_empresa = $datos["nombre_empresa"];
+    $nombre_imagen = $filename;
+
+    
+    if (in_array($extension, $extensiones_validas)){
+
+        $consulta = "INSERT INTO configuracion
+        (nombre_grupo, imagen_grupo)
+        VALUES ('$nombre_empresa','$nombre_imagen')";
+
+        $resultado = $conexion->consultar($consulta);
+
+        $conexion->cerrar();
+
+        if (move_uploaded_file($tempname, $folder)) {
+            
+            $_SESSION["logo"] = $nombre_imagen;
+
+            $_SESSION["empresa"] = $nombre_empresa;
+
+            header('Location: configuracion.php');
+   
+        } else {
+            echo "<h3>  Failed to upload image!</h3>";
+        }
+    }
+    else{
+        echo "<div class='row' style='margin-top:50px;'>
+                <div class='col-12'>
+                    <h2 style='text-align: center;'>Extensión de archivo no válida</h2>
+                </div>
+            </div>";
+    }
+}
+
+function edit_configuracion($datos){
+
+    $conexion = new conectar_db();
+
+    $filename = $_FILES["logo"]["name"];
+    $tempname = $_FILES["logo"]["tmp_name"];
+    $type = $_FILES["logo"]["type"];
+    $folder = "./images/" . $filename;
+
+    $extension = getExtension($filename);
+
+    $extensiones_validas = array("png", "jpg", "jpeg", "svg");
+  
+    $nombre_empresa = $datos["nombre_empresa"];
+    $nombre_imagen = $filename;
+
+    
+    if (in_array($extension, $extensiones_validas)){
+
+        $consulta = "UPDATE configuracion
+        SET nombre_grupo = '$nombre_empresa' , imagen_grupo = '$nombre_imagen'";
+
+        $resultado = $conexion->consultar($consulta);
+
+        $conexion->cerrar();
+
+        if (move_uploaded_file($tempname, $folder)) {
+            
+            $_SESSION["logo"] = $nombre_imagen;
+
+            $_SESSION["empresa"] = $nombre_empresa;
+
+            header('Location: configuracion.php');
+   
+        } else {
+            echo "<h3>  Failed to upload image!</h3>";
+        }
+    }
+    else{
+        echo "<div class='row' style='margin-top:50px;'>
+                <div class='col-12'>
+                    <h2 style='text-align: center;'>Extensión de archivo no válida</h2>
+                </div>
+            </div>";
+    }
+}
+
 
 // function that reads all the alumns from the database
 function leer_imagenes($pagina, $items_por_pagina, $flag=0){
@@ -240,7 +333,7 @@ function add_usuario($datos){
 
         $conexion->cerrar(); 
         
-        header('Location: admin.php');
+        header('Location: configuracion.php');
 }
 
 function editar_usuario($datos){
@@ -265,7 +358,7 @@ function editar_usuario($datos){
         $_SESSION["password"] = $password;
         $_SESSION["nombre_usuario"] = $nombre_usuario;
         
-        header('Location: admin.php');
+        header('Location: configuracion.php');
 }
 
 function registrar_usuario($datos){

@@ -63,6 +63,7 @@ if ($_POST) {
 
                     </div>
                 </main>
+                <?php include("./footer.php");?>
 
             </div>
         </div>
