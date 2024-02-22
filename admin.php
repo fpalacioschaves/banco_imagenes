@@ -4,7 +4,7 @@
 <?php
 include("./funciones.php");
 
-$imagenes = contar_items(("imagenes"));
+$imagenes = contar_items_condicionado("imagenes", "flag_video=0");
 $usuarios = contar_items(("users"));
 $categorias = contar_items(("categorias_imagen"));
 
@@ -151,13 +151,7 @@ $items_por_pagina = 10;
           </section>
         </div>
       </main>
-      <footer class="py-4 bg-light mt-auto">
-        <div class="container-fluid px-4">
-          <div class="d-flex align-items-center justify-content-between small">
-            <div class="text-muted">Copyright &copy; CENEC Grupo ATU 2024</div>
-          </div>
-        </div>
-      </footer>
+      <?php include("./footer.php");?>
     </div>
   </div>
  <!-- </script>-->

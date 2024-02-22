@@ -1,4 +1,7 @@
 <?php
+include("./configuracion.php");
+
+
 class conectar_db{    
     private $host   ="localhost";
     private $usuario="root";
@@ -217,6 +220,73 @@ function add_categoria($datos){
         
         header('Location: admin.php');
 
+}
+
+function add_usuario($datos){
+    $conexion = new conectar_db();
+
+    $nombre_usuario = $_POST["nombre_usuario"];
+
+    $email_usuario = $_POST["email_usuario"];
+
+    $password = $_POST["password"];
+
+
+    $consulta = "INSERT INTO users
+        (nombre_usuario, email_usuario, password_usuario)
+        VALUES ('$nombre_usuario', '$email_usuario', '$password')";
+
+        $resultado = $conexion->consultar($consulta);
+
+        $conexion->cerrar(); 
+        
+        header('Location: admin.php');
+}
+
+function editar_usuario($datos){
+    $conexion = new conectar_db();
+
+    $nombre_usuario = $_POST["nombre_usuario"];
+
+    $email_usuario = $_POST["email_usuario"];
+
+    $password = $_POST["password_usuario"];
+
+
+    $consulta = "UPDATE users
+        SET nombre_usuario='$nombre_usuario', email_usuario='$email_usuario', password_usuario='$password'
+        WHERE email_usuario = '".$_SESSION['usuario']."'";
+
+        $resultado = $conexion->consultar($consulta);
+
+        $conexion->cerrar(); 
+
+        $_SESSION["usuario"] = $email_usuario;
+        $_SESSION["password"] = $password;
+        $_SESSION["nombre_usuario"] = $nombre_usuario;
+        
+        header('Location: admin.php');
+}
+
+function registrar_usuario($datos){
+    $conexion = new conectar_db();
+
+    $nombre_usuario = $_POST["nombre_usuario"];
+
+    $email_usuario = $_POST["email_usuario"];
+
+    $password = $_POST["password"];
+
+
+    $consulta = "INSERT INTO users
+        (nombre_usuario, email_usuario, password_usuario)
+        VALUES ('$nombre_usuario', '$email_usuario', '$password')";
+
+        $resultado = $conexion->consultar($consulta);
+
+        $conexion->cerrar(); 
+        
+        header('Location: index.php');
 }
 
 /**

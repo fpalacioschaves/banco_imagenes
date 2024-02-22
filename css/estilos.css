@@ -5,6 +5,44 @@
   padding: 1rem;
 }
 
+.registro a{
+  color: black;
+  padding: 30px 0px;
+  float: left;
+}
+
+.registro a:hover{
+  text-decoration: underline;
+  color: black;
+}
+
+.menu{
+  color: white;
+  width: 300px;
+  font-size: 20px;
+  margin-left: 10px;
+}
+
+.bienvenida{
+  margin: 0px 15px;
+  color: white;
+  position: absolute;
+  bottom: 50px;
+}
+
+.titulo_empresa{
+  color:white;
+  margin-top: 10px;
+  width: 100%;
+  text-align: center;
+
+}
+
+.sb-topnav .navbar-brand{
+  width: 100px !important;
+  margin: 0;
+}
+
 .mt-4{
     margin: 30px 0 !important;
 }

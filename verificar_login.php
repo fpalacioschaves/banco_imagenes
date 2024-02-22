@@ -13,8 +13,13 @@ $correcto = 0;
             $resultado = $login->consultar($consulta_login)->fetch_all(MYSQLI_ASSOC);
           
             if($resultado[0]["numero_usuarios"] == "1"){
+
+                $consulta_login = "SELECT nombre_usuario FROM users WHERE email_usuario = '$usuario' AND password_usuario = '$password'";
+                $resultado = $login->consultar($consulta_login)->fetch_all(MYSQLI_ASSOC);
+
                 $_SESSION["usuario"] = $usuario;
                 $_SESSION["password"] = $password;
+                $_SESSION["nombre_usuario"] = $resultado[0]["nombre_usuario"];
 
                 $correcto = 1;
                 header('Location: admin.php');

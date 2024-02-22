@@ -64,6 +64,44 @@ function filtrar_imagenes(){
 
 }
 
+function filtrar_videos(){
+  var filtro = document.getElementById("filtro").value;
+  var ajax_url = "./filtrar_videos.php";
+
+  var paginador = document.getElementById("paginador");
+
+  if(filtro != ""){
+      paginador.style.display = "none";
+
+  }
+  else{
+      paginador.style.display = "block";
+  }
+
+
+
+  var ajax_request = new XMLHttpRequest();
+
+  // Definimos una función a ejecutar cuándo la solicitud Ajax tiene alguna información
+  ajax_request.onreadystatechange = function() {
+
+      // si el readyState es 4, proseguir
+      if (ajax_request.readyState == 4 ) {
+
+          // Analizaos el responseText que contendrá el JSON enviado desde el servidor
+          var response = ajax_request.responseText;
+          document.getElementById("gallery_container").innerHTML = response;
+      }
+   }
+
+   // Definimos como queremos realizar la comunicación
+   ajax_request.open( "GET", ajax_url + "?filtro=" + filtro );
+         
+   //Enviamos la solictud con los parámetros que habíamos definido
+   ajax_request.send();
+
+}
+
 $('.celda_editable').on('blur',function(){
     
     var that = $(this),

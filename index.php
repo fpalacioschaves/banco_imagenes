@@ -32,6 +32,9 @@ include("./head.php"); ?>
             <p class="label">Password</p>
                 <input type="password" class="form-control login" name="password" placeholder="Password" required>
                 <input type="submit" value="Login" class="btn btn-primary btn-login">
+             <p class="registro">   
+                <a href="./registro.php">No tiene cuenta aún? Regístrese aquí</a>
+            </p>
             </div>
             </form>
         </div>

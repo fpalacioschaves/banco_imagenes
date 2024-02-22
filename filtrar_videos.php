@@ -6,7 +6,7 @@ $filtro = $_GET["filtro"];
 $conexion = new conectar_db();
 $consulta = "SELECT * FROM imagenes, categorias_imagen 
 WHERE imagenes.categoria_imagen = categorias_imagen.id_categoria
-AND flag_video = 0
+AND flag_video = 1
 AND (tags_imagen LIKE '%" . $filtro . "%' 
 OR descripcion_imagen LIKE '%" . $filtro . "%' 
 OR nombre_categoria LIKE '%" . $filtro . "%' 
@@ -27,11 +27,11 @@ foreach ($imagenes as $imagen) {
   '<div class="masonry-item" data-category="' . $categoria_imagen . '">
     <div class="card shadow-sm">
       <div class="img_container">
-        <a href="uploads/' . $url_imagen . '" 
-          data-lightbox="' . $titulo_imagen . '" 
-          data-title="' . $titulo_imagen . '">
-            <img src="./uploads/' . $url_imagen . '">
-        </a>
+      <a class="video-link" vidUrl="uploads/'.$url_imagen.'">
+      <video src="uploads/'.$url_imagen.'">
+        <p>Su navegador no soporta vídeos HTML5.</p>
+      </video>
+    </a>
       </div>
 
       <div class="card-body">
